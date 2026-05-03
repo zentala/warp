@@ -1253,10 +1253,6 @@ impl ansi::Handler for GridHandler {
     fn on_reset_grid(&mut self) {
         match &mut self.ansi_handler_state.reset_grid_checks {
             ResetGridChecks::Enabled { received_osc } => {
-                debug_assert!(
-                    !*received_osc,
-                    "Grid has already received a Reset Grid OSC."
-                );
                 *received_osc = true;
             }
             ResetGridChecks::Disabled => (),
